@@ -45,8 +45,9 @@ class HandleCollisionsAction(Action):
         # foods = food.get_food()
         # for i in range(constants.DEFAULT_FOOD):
         #     foods[i]
-        foods = food[0]
-
+        food1 = food[0]
+        food2 = food[1]
+        food3 = food[2]
         snake1 = snakes[0]
         snake2 = snakes[1]
         head1 = snake1.get_head()
@@ -55,17 +56,41 @@ class HandleCollisionsAction(Action):
         score2 = score[1]
 
 
-        if head1.get_position().equals(foods.get_position()):
-            points = foods.get_points()
+        if head1.get_position().equals(food1.get_position()):
+            points = food1.get_points()
             snake1.grow_tail(points)
             score1.add_points(points)
-            foods.reset()
+            food1.reset()
 
-        elif head2.get_position().equals(foods.get_position()):
-            points = foods.get_points()
+        elif head1.get_position().equals(food2.get_position()):
+            points = food2.get_points()
+            snake1.grow_tail(points) 
+            score1.add_points(points)
+            food2.reset()
+
+        elif head1.get_position().equals(food3.get_position()):
+            points = food3.get_points()
+            snake1.grow_tail(points) 
+            score1.add_points(points)
+            food3.reset()    
+
+        elif head2.get_position().equals(food1.get_position()):
+            points = food1.get_points()
             snake2.grow_tail(points) 
             score2.add_points(points)
-            foods.reset()
+            food1.reset()
+
+        elif head2.get_position().equals(food2.get_position()):
+            points = food2.get_points()
+            snake2.grow_tail(points) 
+            score2.add_points(points)
+            food2.reset()        
+            
+        elif head2.get_position().equals(food3.get_position()):
+            points = food3.get_points()
+            snake2.grow_tail(points) 
+            score2.add_points(points)
+            food3.reset()
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with the other snake.

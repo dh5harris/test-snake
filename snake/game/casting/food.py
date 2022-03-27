@@ -19,7 +19,7 @@ class Food(Actor):
         "Constructs a new Food."
         super().__init__()
         self._points = 0
-        self.set_text("&")
+        self.set_text("")
         # self._foods = []
         # self._foods = self.set_food()
         self.set_color(constants.YELLOW)
@@ -35,9 +35,10 @@ class Food(Actor):
             y = random.randint(1, constants.MAX_Y - 1)
             position = Point(x, y)
             position = position.scale(constants.CELL_SIZE)
-            # text = '&'
+            
             # food = Actor()
             self.set_position(position)
+            self.set_text('&')
         # food.set_text("&")
         # self._foods.append(food)
 
