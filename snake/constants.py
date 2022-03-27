@@ -16,4 +16,4 @@ YELLOW = Color(255, 255, 0)
 GREEN = Color(0, 255, 0)
 BLUE = Color(0, 87, 184)   #royal 0,87,184  deep 0,46,93
 GRAY = Color(128, 128, 128)
-DEFAULT_FOOD = 40
+DEFAULT_FOOD = 3

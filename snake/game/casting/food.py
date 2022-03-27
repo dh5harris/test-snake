@@ -20,6 +20,7 @@ class Food(Actor):
         super().__init__()
         self._points = 0
         self.set_text("&")
+        # self._foods = []
         # self._foods = self.set_food()
         self.set_color(constants.YELLOW)
         self.reset()
@@ -27,13 +28,26 @@ class Food(Actor):
         
     def reset(self):
         """Selects a random position and points that the food is worth."""
+        for i in range(constants.DEFAULT_FOOD):
+            self._points = random.randint(1, 8)
+            # x = random.randint(1, constants.COLUMNS - 1)
+            x = random.randint(1, constants.MAX_X - 1)
+            y = random.randint(1, constants.MAX_Y - 1)
+            position = Point(x, y)
+            position = position.scale(constants.CELL_SIZE)
+            # text = '&'
+            # food = Actor()
+            self.set_position(position)
+        # food.set_text("&")
+        # self._foods.append(food)
 
-        self._points = random.randint(1, 8)
-        x = random.randint(1, constants.COLUMNS - 1)
-        y = random.randint(1, constants.ROWS - 1)
-        position = Point(x, y)
-        position = position.scale(constants.CELL_SIZE)
-        self.set_position(position)
+    def get_position(self):
+        """Gets the actor's position in 2d space.
+        
+        Returns:
+            Point: The actor's position in 2d space.
+        """
+        return self._position
         
         
     def get_points(self):
@@ -45,7 +59,7 @@ class Food(Actor):
         return self._points
 
     def set_food(self):
-        for n in range(1, constants.DEFAULT_FOOD):
+        for n in range(constants.DEFAULT_FOOD):
             # text_list = [42,79]
             # text = chr(random.choice(text_list)) 
 
@@ -54,20 +68,17 @@ class Food(Actor):
             y = random.randint(1, constants.MAX_Y - 10)
             position = Point(x, y)
             position = position.scale(constants.CELL_SIZE)
-
-            # r = random.randint(0, 255)
-            # g = random.randint(0, 255)
-            # b = random.randint(0, 255)
-            # color = Color(r, g, b)
             
-            # artifact = Artifact()
+            foods = self.reset()
             # self.set_text(text)
             self.set_font_size(constants.FONT_SIZE)
             # self.set_color(color)
-            self.set_color(constants.RED)
+            self.set_color(constants.YELLOW)
             self.set_position(position)
             # self.set_velocity(Point(0, 1))
-
+            self.set_text("@")
+            self._foods = foods
             # cast.add_actor("food", food)
+
     def get_food(self):
         return self._foods
