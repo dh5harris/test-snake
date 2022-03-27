@@ -19,9 +19,9 @@ class Food(Actor):
         "Constructs a new Food."
         super().__init__()
         self._points = 0
-        self.set_text("@")
+        self.set_text("&")
         # self._foods = self.set_food()
-        self.set_color(constants.RED)
+        self.set_color(constants.YELLOW)
         self.reset()
         # self.set_food()
         

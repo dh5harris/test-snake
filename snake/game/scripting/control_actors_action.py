@@ -30,7 +30,7 @@ class ControlActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        cycles = cast.get_actors("cycles")
+        snakes = cast.get_actors("snakes")
 
         # left
         if self._keyboard_service.is_key_down('a'):
@@ -48,8 +48,8 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction1 = Point(0, constants.CELL_SIZE)
         
-        cycle1 = cycles[0]
-        cycle1.turn_head(self._direction1)
+        snake1 = snakes[0]
+        snake1.turn_head(self._direction1)
 
         #left
         if self._keyboard_service.is_key_down('j'):
@@ -67,5 +67,5 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('k'):
             self._direction2 = Point(0, constants.CELL_SIZE)
         
-        cycle2 = cycles[1]
-        cycle2.turn_head(self._direction2)
+        snake2 = snakes[1]
+        snake2.turn_head(self._direction2)
